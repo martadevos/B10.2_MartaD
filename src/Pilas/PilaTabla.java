@@ -2,7 +2,7 @@ package Pilas;
 
 import java.util.Arrays;
 
-public class PilaTabla{
+public class PilaTabla {
 
     /*estará formada por una tabla enteros (Integer) para guardar los elementos apilados
 y contendrá los siguiente métodos (ojo hay que hacer uso, siempre que sea posible, de la
@@ -32,22 +32,32 @@ está vacía;
         this.pilaTabla = new Integer[i];
     }
 
-    public boolean pilaTablaVacia(){return indiceCima < 0;}
+    public boolean pilaTablaVacia() {
+        return indiceCima < 0;
+    }
 
-    public boolean pilaTablaLlena(){return indiceCima == pilaTabla.length - 1;}
+    public boolean pilaTablaLlena() {
+        return indiceCima == pilaTabla.length - 1;
+    }
 
-    public int conocerCima(){return indiceCima;}
-
+    public Integer conocerCima() {
+        Integer cima;
+        if (pilaTablaVacia()) cima = null;
+        else cima = indiceCima;
+        return cima;
+    }
     public int conocerNumElementos(){return indiceCima + 1;}
 
-    public void apilar(Integer i){
-        if(pilaTablaLlena()) Arrays.copyOf(pilaTabla,pilaTabla.length+10);
+
+    public void apilar (Integer i){
+        if (pilaTablaLlena()) pilaTabla = Arrays.copyOf(pilaTabla, pilaTabla.length + 10);
         indiceCima++;
         pilaTabla[indiceCima] = i;
     }
-
-    public void desapilar(){
-        if(!pilaTablaVacia()) indiceCima --;
-        else System.out.println("La pila esta vacia");
-        }
+    public Integer desapilar () {
+        Integer i;
+        if (!pilaTablaVacia()) i = indiceCima--;
+        else i=null;
+        return i;
+    }
 }
